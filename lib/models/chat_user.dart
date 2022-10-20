@@ -4,9 +4,10 @@ class ChatUser {
   final String email;
   final String imageURL;
 
-  const ChatUser(
-      {required this.id,
-      required this.name,
-      required this.email,
-      required this.imageURL});
+  const ChatUser({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.imageURL,
+  });
 }
