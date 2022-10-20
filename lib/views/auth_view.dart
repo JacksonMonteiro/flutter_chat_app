@@ -12,9 +12,19 @@ class AuthView extends StatefulWidget {
 class _AuthViewState extends State<AuthView> {
   bool _isLoading = false;
 
-  void _handleSubmit(AuthFormData data) {
-    setState(() => _isLoading = true);
-    setState(() => _isLoading = false);
+  Future<void> _handleSubmit(AuthFormData data) async {
+    try {
+      setState(() => _isLoading = true);
+
+      if (data.isLogin) {
+        // Login
+      } else {
+        // Signup
+      }
+    } catch (error) {
+    } finally {
+      setState(() => _isLoading = false);
+    }
   }
 
   @override
