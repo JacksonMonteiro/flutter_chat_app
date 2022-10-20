@@ -1,3 +1,4 @@
+import 'package:chat/views/auth_or_app_view.dart';
 import 'package:chat/views/auth_view.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AuthView(),
+      home: const AuthOrAppView(),
     );
   }
 }
