@@ -24,6 +24,7 @@ class _AuthViewState extends State<AuthView> {
             .signup(data.name, data.email, data.password, data.image);
       }
     } catch (error) {
+      print(error.toString());
     } finally {
       if (!mounted) return;
       setState(() => _isLoading = false);
