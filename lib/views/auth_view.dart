@@ -25,6 +25,7 @@ class _AuthViewState extends State<AuthView> {
       }
     } catch (error) {
     } finally {
+      if (!mounted) return;
       setState(() => _isLoading = false);
     }
   }
