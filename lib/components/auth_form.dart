@@ -64,8 +64,8 @@ class _AuthFormState extends State<AuthForm> {
                     decoration: InputDecoration(labelText: 'Name'),
                     validator: (_name) {
                       final name = _name ?? '';
-                      if (name.trim().length < 5) {
-                        return 'Name must be at least 5 characters';
+                      if (name.trim().length < 3) {
+                        return 'Name must be at least 3 characters';
                       }
 
                       return null;
