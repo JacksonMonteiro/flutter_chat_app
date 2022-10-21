@@ -14,28 +14,25 @@ class ChatServiceFirebase implements ChatService {
   @override
   Future<ChatMessage?> save(String text, ChatUser user) async {
     final store = FirebaseFirestore.instance;
+    final message = ChatMessage(
+      id: '',
+      text: text,
+      createdAt: DateTime.now(),
+      userId: user.id,
+      userName: user.name,
+      userImageURL: user.imageURL,
+    );
 
-    // Turn a ChatMessage into a Map<String, dynamic>
-    final docRef = await store.collection('chat').add({
-      'text': text,
-      'createdAt': DateTime.now().toIso8601String(),
-      'userId': user.id,
-      'userName': user.name,
-      'userImageURL': user.imageURL
-    });
+    final docRef = await store
+        .collection('chat')
+        .withConverter(
+          fromFirestore: _fromFirestore,
+          toFirestore: _toFirestore,
+        )
+        .add(message);
 
     final docSnapshot = await docRef.get();
-    final data = docSnapshot.data();
-
-    // Turn a Map<String, dynamic> Into a ChatMessage
-    return ChatMessage(
-      id: docSnapshot.id,
-      text: data?['text'],
-      createdAt: DateTime.parse(data?['createdAt']),
-      userId: data?['userId'],
-      userName: data?['userName'],
-      userImageURL: data?['userImageURL'],
-    );
+    return docSnapshot.data();
   }
 
   ChatMessage _fromFirestore(DocumentSnapshot<Map<String, dynamic>> docSnapshot,
