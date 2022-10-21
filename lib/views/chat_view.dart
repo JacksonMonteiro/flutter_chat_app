@@ -1,5 +1,6 @@
 import 'package:chat/components/messages.dart';
 import 'package:chat/components/new_message.dart';
+import 'package:chat/models/chat_notification.dart';
 import 'package:chat/services/auth/auth_service.dart';
 import 'package:chat/services/notification/chat_notification_service.dart';
 import 'package:chat/views/notification_view.dart';
