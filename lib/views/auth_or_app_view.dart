@@ -1,3 +1,4 @@
+import 'package:chat/firebase_options.dart';
 import 'package:chat/models/chat_user.dart';
 import 'package:chat/services/auth/auth_service.dart';
 import 'package:chat/services/auth/auth_service_mock.dart';
@@ -11,7 +12,9 @@ class AuthOrAppView extends StatelessWidget {
   const AuthOrAppView({super.key});
 
   Future<void> init(BuildContext context) async {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
   }
 
   @override
